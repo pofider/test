@@ -3,5 +3,8 @@
   "dependencies": {
     "jsreport": "1.0.9"
   },
+  "scripts": {
+    "start": "node server.js"
+  },
   "main": "server.js"
 }
