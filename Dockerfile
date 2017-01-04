@@ -10,6 +10,8 @@ RUN adduser --disabled-password --gecos "" jsreport
 RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/node" >> /etc/sudoers
 RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/npm" >> /etc/sudoers
 
+VOLUME ["/jsreport"]
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
