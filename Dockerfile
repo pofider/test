@@ -15,6 +15,9 @@ VOLUME ["/jsreport"]
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+ADD run.sh /usr/src/app/jsreport/run.sh
+
+
 COPY package.json /usr/src/app/
 RUN npm install --production
 RUN node node_modules/jsreport --init
@@ -31,4 +34,4 @@ ENV NODE_ENV production
 
 HEALTHCHECK CMD curl --fail http://localhost || exit 1
 
-CMD [ "node", "index.js" ]
+CMD ["bash", "/usr/src/app/run.sh"]

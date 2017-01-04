@@ -1,0 +1,1 @@
+NODE_ENV=${NODE_ENV:-production} node "/usr/src/app/index.js"
