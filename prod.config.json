@@ -13,16 +13,7 @@
         },
         "enabled": false
     },
-    "connectionString": { 
-        "name": "mssql",
-        "user": "jsreport",
-        "password": "Password1*",
-        "server": "jsreport-test.database.windows.net",
-        "database": "jsreport-test",
-		"options": {
-			"encrypt": true
-		}		
-    },
+    "connectionString": { "name": "fs" },
     "httpPort": 5488,
     "httpsPort": null,
     "blobStorage": "fileSystem",
