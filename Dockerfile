@@ -1,6 +1,6 @@
 FROM ubuntu:yakkety
 MAINTAINER Jan Blaha
-EXPOSE 80
+EXPOSE 5488
 
 RUN apt-get update && apt-get install -y curl sudo bzip2 && \
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && \

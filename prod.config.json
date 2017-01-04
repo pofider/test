@@ -14,7 +14,7 @@
         "enabled": false
     },
     "connectionString": { "name": "fs" },
-    "httpPort": 80,
+    "httpPort": 5488,
     "httpsPort": null,
     "blobStorage": "fileSystem",
     "phantom": {
