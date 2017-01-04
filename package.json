@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jsreportonline/phantom-pdf#readme",
   "dependencies": {
-    "jsreport": "*"    
+    "jsreport": "*",
+    "jsreport-mssql-store": "^0.1.4"
   }
 }
