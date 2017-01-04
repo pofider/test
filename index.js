@@ -3,7 +3,7 @@ var jsreport = require('jsreport')()
 var date = new Date().getTime()
 jsreport.on('express-configure', function (app) {
    app.get('/api/test', function (req, res) {
-     res.send('5 - ' + date)
+     res.send('6 - ' + date)
    })
 })
 
