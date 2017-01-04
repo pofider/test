@@ -1,33 +1,19 @@
-FROM node:4.4
+FROM ubuntu:yakkety
 MAINTAINER Jan Blaha
 EXPOSE 80
 
-RUN apt-get update && apt-get install -y sudo
-RUN npm install npm -g
-RUN adduser --disabled-password --gecos "" jsreport
-RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/node" >> /etc/sudoers
-RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/npm" >> /etc/sudoers
+RUN apt-get update && apt-get install -y curl sudo bzip2 && \
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && \
+    apt-get install -y nodejs libfontconfig1 libfontconfig1-dev
 
-VOLUME ["/jsreport"]
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-WORKDIR /home/jsreport
+COPY package.json /usr/src/app/
+RUN npm install --production
 
-ADD run.sh /home/jsreport/run.sh
+COPY . /usr/src/app
 
-RUN sudo npm install jsreport --production
-RUN sudo node node_modules/jsreport --init
+HEALTHCHECK CMD curl --fail http://localhost || exit 1
 
-RUN sudo npm install jsreport-ejs --production --save --save-exact
-RUN sudo npm install jsreport-jade --production --save --save-exact
-RUN sudo npm install jsreport-freeze --production --save --save-exact
-RUN sudo npm install jsreport-phantom-image --production --save --save-exact
-
-RUN sudo apt-get install -y xfonts-75dpi
-RUN sudo apt-get install -y xfonts-base
-RUN sudo wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-jessie-amd64.deb
-RUN sudo dpkg -i wkhtmltox-0.12.2.1_linux-jessie-amd64.deb
-RUN sudo npm install jsreport-wkhtmltopdf --production --save --save-exact
-
-ENV NODE_ENV production
-
-CMD ["bash", "/home/jsreport/run.sh"]
+CMD [ "node", "index.js" ]
