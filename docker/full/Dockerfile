@@ -4,7 +4,6 @@ EXPOSE 5488
 
 RUN apt-get update && apt-get install -y sudo
 RUN apt-get install -y nodejs libgtk2.0-dev libxtst-dev libxss1 libgconf2-dev libnss3-dev libasound2-dev xvfb xfonts-75dpi xfonts-base
-RUN npm install npm -g
 RUN adduser --disabled-password --gecos "" jsreport
 RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/node" >> /etc/sudoers
 RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/npm" >> /etc/sudoers
