@@ -34,4 +34,4 @@ fi
 
 su jsreport
 
-NODE_ENV=${NODE_ENV:-production} Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 & export DISPLAY=:99.0 && node "/app/server.js"
+Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 & export DISPLAY=:99.0 && NODE_ENV=${NODE_ENV:-production} node "/app/server.js"
