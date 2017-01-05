@@ -17,7 +17,7 @@ WORKDIR /app
 ADD run.sh /app/run.sh
 
 
-COPY package.json /app/jsreport/
+COPY package.json /app/
 RUN npm install --production
 RUN node node_modules/jsreport --init
 
@@ -27,7 +27,7 @@ RUN sudo npm install jsreport-freeze --production --save --save-exact
 RUN sudo npm install jsreport-phantom-image --production --save --save-exact
 RUN sudo npm install jsreport-wkhtmltopdf --production --save --save-exact
 
-COPY . /app/jsreport/
+COPY . /app/
 
 ENV NODE_ENV production
 
