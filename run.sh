@@ -6,27 +6,27 @@ if [ -d "/jsreport" ]; then
     mkdir "/jsreport/data"
   fi
 
-  ln -nsf "/jsreport/data" "/home/jsreport/data"
+  ln -nsf "/jsreport/data" "/app/data"
 
   # copy default config  
 
   if [ ! -f "/jsreport/prod.config.json" ]; then    
-    cp "/home/jsreport/prod.config.json" "/jsreport/prod.config.json"    
+    cp "/app/prod.config.json" "/jsreport/prod.config.json"    
   fi
 
   if [ ! -f "/jsreport/dev.config.json" ]; then
-      cp "/home/jsreport/dev.config.json" "/jsreport/dev.config.json"
+      cp "/app/dev.config.json" "/jsreport/dev.config.json"
   fi
 
   # delete default config and link from volume
 	
-  rm -f "/home/jsreport/prod.config.json"
-  ln -s "/jsreport/prod.config.json" "/home/jsreport/prod.config.json"
+  rm -f "/app/prod.config.json"
+  ln -s "/jsreport/prod.config.json" "/app/prod.config.json"
 
-  rm -f "/home/jsreport/dev.config.json"
-  ln -s "/jsreport/dev.config.json" "/home/jsreport/dev.config.json"
+  rm -f "/app/dev.config.json"
+  ln -s "/jsreport/dev.config.json" "/app/dev.config.json"
 
   chown -R jsreport:jsreport /jsreport
 fi
 
-NODE_ENV=${NODE_ENV:-production} node "/home/jsreport/index.js"
+NODE_ENV=${NODE_ENV:-production} node "/app/index.js"
