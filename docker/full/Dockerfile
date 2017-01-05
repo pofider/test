@@ -30,6 +30,7 @@ RUN sudo wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2
 RUN sudo dpkg -i wkhtmltox-0.12.2.1_linux-jessie-amd64.deb
 RUN sudo npm install jsreport-wkhtmltopdf --production --save --save-exact
 
+RUN sudo npm install electron --production --save --save-exact
 RUN sudo npm install jsreport-electron-pdf --production --save --save-exact
 
 ENV NODE_ENV production
