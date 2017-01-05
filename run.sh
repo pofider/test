@@ -1,3 +1,6 @@
+# file run.sh
+#!/bin/sh
+
 if [ -d "/jsreport" ]; then 
 
   # link data folder from mounted volume
@@ -29,4 +32,6 @@ if [ -d "/jsreport" ]; then
   chown -R jsreport:jsreport /jsreport
 fi
 
-NODE_ENV=${NODE_ENV:-production} node "/app/index.js"
+su jsreport
+
+NODE_ENV=${NODE_ENV:-production} node "/app/server.js"
