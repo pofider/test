@@ -12,13 +12,11 @@ RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/npm" >> /etc/sudoers
 
 VOLUME ["/jsreport"]
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-ADD run.sh /usr/src/app/jsreport/run.sh
+WORKDIR /home/jsreport
+ADD run.sh /home/jsreport/run.sh
 
 
-COPY package.json /usr/src/app/
+COPY package.json /home/jsreport/
 RUN npm install --production
 RUN node node_modules/jsreport --init
 
@@ -28,10 +26,10 @@ RUN sudo npm install jsreport-freeze --production --save --save-exact
 RUN sudo npm install jsreport-phantom-image --production --save --save-exact
 RUN sudo npm install jsreport-wkhtmltopdf --production --save --save-exact
 
-COPY . /usr/src/app
+COPY . /home/jsreport/
 
 ENV NODE_ENV production
 
 HEALTHCHECK CMD curl --fail http://localhost || exit 1
 
-CMD ["bash", "/usr/src/app/run.sh"]
+CMD ["bash", "/home/jsreport/run.sh"]
