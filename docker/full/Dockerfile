@@ -34,4 +34,3 @@ ENV NODE_ENV production
 ENV DEBUG *
 
 CMD ["bash", "/usr/src/app/run.sh"]
-CMD Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
