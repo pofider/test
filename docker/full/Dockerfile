@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y curl sudo && \
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+ADD run.sh /usr/src/app/run.sh
+
+
 RUN sudo npm install jsreport --production
 RUN sudo node node_modules/jsreport --init
 
@@ -30,4 +33,4 @@ COPY . /usr/src/app
 ENV NODE_ENV production
 ENV DEBUG *
 
-CMD Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 & export DISPLAY=:99.0 && node index.js
+CMD ["bash", "/usr/src/app/run.sh"]
