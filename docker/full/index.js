@@ -19,6 +19,7 @@ const server = http.createServer((req, res) => {
 
     console.log(result.numberOfPages);
     result.stream.pipe(res);
+    conversion.kill(); // necessary if you use the electron-server strategy, see bellow for details
   });
 });
 
