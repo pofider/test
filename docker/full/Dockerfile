@@ -28,5 +28,6 @@ RUN sudo npm install jsreport-electron-pdf --production --save --save-exact
 COPY . /usr/src/app
 
 ENV NODE_ENV production
+ENV DEBUG *
 
 CMD Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 & export DISPLAY=:99.0 && node index.js
