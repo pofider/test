@@ -25,6 +25,8 @@ RUN sudo npm install jsreport-wkhtmltopdf --production --save --save-exact
 RUN sudo npm install electron-prebuilt@1.4.8 --production --save --save-exact
 RUN sudo npm install jsreport-electron-pdf --production --save --save-exact
 
+COPY . /usr/src/app
+
 ENV NODE_ENV production
 
-CMD Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 & export DISPLAY=:99.0 && node server.js
+CMD Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 & export DISPLAY=:99.0 && node index.js
