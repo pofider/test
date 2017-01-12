@@ -2,7 +2,7 @@ FROM node:6.9
 MAINTAINER Jan Blaha
 EXPOSE 5488
 
-RUN apt-get update && \
+RUN apt-get update && apt-get install -y sudo && \
     apt-get install -y nodejs libgtk2.0-dev libxtst-dev libxss1 libgconf2-dev libnss3-dev libasound2-dev xvfb xfonts-75dpi xfonts-base
 
 RUN mkdir -p /usr/src/app
