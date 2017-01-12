@@ -6,10 +6,6 @@ RUN apt-get update && apt-get install -y curl sudo && \
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && \
     apt-get install -y nodejs libgtk2.0-dev libxtst-dev libxss1 libgconf2-dev libnss3-dev libasound2-dev xvfb xfonts-75dpi xfonts-base
 
-RUN adduser --disabled-password --gecos "" jsreport
-RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/node" >> /etc/sudoers
-RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/npm" >> /etc/sudoers
-
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
