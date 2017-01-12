@@ -31,6 +31,8 @@ if [ -d "/jsreport" ]; then
   chown -R jsreport:jsreport /jsreport
 fi
 
+su jsreport
+
 echo Trying to remove the lock on displat 99
 rm /tmp/.X99-lock > /dev/null 2>&1
 
