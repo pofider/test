@@ -10,8 +10,6 @@ RUN adduser --disabled-password --gecos "" jsreport
 RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/node" >> /etc/sudoers
 RUN echo "jsreport ALL=(root) NOPASSWD: /usr/local/bin/npm" >> /etc/sudoers
 
-VOLUME ["/jsreport"]
-
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
@@ -20,7 +18,7 @@ RUN sudo node node_modules/jsreport --init
 
 RUN sudo npm install --production --save --save-exact jsreport-ejs jsreport-jade jsreport-freeze jsreport-phantom-image \
     jsreport-html-to-text jsreport-mssql-store jsreport-postgres-store jsreport-mongodb-store jsreport-wkhtmltopdf \
-    jsreport-azure-storage electron jsreport-electron-pdf
+    electron jsreport-electron-pdf
 
 ADD run.sh /usr/src/app/run.sh
 COPY . /usr/src/app
