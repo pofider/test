@@ -7,7 +7,7 @@ node_js:
 
 before_deploy: 
   - "node node_modules/jsreport --init"
-  - "node_modules/.bin/jsreport-compile.cmd"
+  - "node_modules/.bin/jsreport-compile"
 
 addons:
   apt:
