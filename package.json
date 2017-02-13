@@ -1,23 +1,10 @@
 {
-  "name": "phantom-pdf",
+  "name": "pofider-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jsreportonline/phantom-pdf.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jsreportonline/phantom-pdf/issues"
-  },
-  "homepage": "https://github.com/jsreportonline/phantom-pdf#readme",
+  "main": "index.js", 
   "dependencies": {
-    "jsreport": "*",
-    "jsreport-mssql-store": "^0.1.4"
+    "jsreport": "jsreport/jsreport",
+    "jsreport-compile": "*"
   }
 }
