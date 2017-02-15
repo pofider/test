@@ -26,7 +26,7 @@ deploy:
  provider: GitHub
  auth_token:
   secure: f5JMTlhWW7SKTeONrfO9hweB+AP2EY5VGAdzcM56VRNjIcY4zX7TiC7VWXrn5Dfj
- artifact: jsreport.exe
+ artifact: jsreport-win64.zip
  draft: false
  prerelease: false
  force_update: true
