@@ -6,7 +6,10 @@ artifacts:
     name: jsreport
 
 init:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))    
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))  
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))    
 
 install:  
   - ps: Install-Product node $env:nodejs_version
@@ -23,6 +26,7 @@ test_script:
 
 before_deploy:  
   - "node_modules/.bin/jsreport-compile.cmd"
+  - "appveyor PushArtifact jsreport.exe"
 
 deploy:  
  provider: GitHub
