@@ -24,11 +24,12 @@ before_deploy:
 
 deploy:  
  provider: GitHub
-  auth_token:
-    secure: "MlYtJPvxZuQlKMolBQxysZef5AiZapj8gOI8dPpEzkMxeQlQmL6/j/myMT6Zpkne"
-  artifact: jsreport.exe
-  draft: false
-  prerelease: false
-  on:
-    appveyor_repo_tag: true
+ auth_token:
+  secure: "MlYtJPvxZuQlKMolBQxysZef5AiZapj8gOI8dPpEzkMxeQlQmL6/j/myMT6Zpkne"
+ artifact: jsreport.exe
+ draft: false
+ prerelease: false
+ on:
+   appveyor_repo_tag: true
+
 build: off
