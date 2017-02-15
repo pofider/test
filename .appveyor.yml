@@ -3,8 +3,7 @@ environment:
 
 artifacts:
   - path: jsreport.exe
-    name: jsreport-win64.zip
-    type: zip
+    name: jsreport.exe
 
 install:  
   - ps: Install-Product node $env:nodejs_version
@@ -26,7 +25,7 @@ deploy:
  provider: GitHub
  auth_token:
   secure: f5JMTlhWW7SKTeONrfO9hweB+AP2EY5VGAdzcM56VRNjIcY4zX7TiC7VWXrn5Dfj
- artifact: jsreport-win64.zip
+ artifact: jsreport.exe
  draft: false
  prerelease: false
  force_update: true
