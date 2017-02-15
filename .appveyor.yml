@@ -1,10 +1,6 @@
 environment:		
   nodejs_version: "6"
 
-artifacts:
-  - path: jsreport.exe
-    name: jsreport.exe
-
 install:  
   - ps: Install-Product node $env:nodejs_version
   - node --version
@@ -25,7 +21,7 @@ deploy:
  provider: GitHub
  auth_token:
   secure: f5JMTlhWW7SKTeONrfO9hweB+AP2EY5VGAdzcM56VRNjIcY4zX7TiC7VWXrn5Dfj
- artifact: jsreport.exe
+ artifact: /.*\.exe/
  draft: false
  prerelease: false
  force_update: true
