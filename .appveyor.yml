@@ -26,6 +26,7 @@ test_script:
 before_deploy:  
   - "node_modules/.bin/jsreport-compile.cmd"
   - "7z a jsreport.zip jsreport.exe"
+  - "appveyor PushArtifact jsreport.zip"
 
 deploy:  
  provider: GitHub
