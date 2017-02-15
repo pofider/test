@@ -3,7 +3,8 @@ environment:
 
 artifacts:
   - path: jsreport.exe
-    name: jsreport.exe
+    name: jsreport-win64.zip
+    type: zip
 
 install:  
   - ps: Install-Product node $env:nodejs_version
@@ -11,12 +12,23 @@ install:
   - npm --version  
   - cmd: '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64'
   - appveyor-retry npm install
-  - "node node_modules/jsreport --init"  
-  - "node_modules/.bin/jsreport-compile.cmd"
+  - "node node_modules/jsreport --init"    
 
 test_script:  
   - node --version
-  - npm --version  
+  - npm --version    
   - npm test
 
+before_deploy:  
+  - "node_modules/.bin/jsreport-compile.cmd"
+
+deploy:  
+ provider: GitHub
+  auth_token:
+    secure: "MlYtJPvxZuQlKMolBQxysZef5AiZapj8gOI8dPpEzkMxeQlQmL6/j/myMT6Zpkne"
+  artifact: jsreport.exe
+  draft: false
+  prerelease: false
+  on:
+    appveyor_repo_tag: true
 build: off
