@@ -2,13 +2,7 @@ environment:
   nodejs_version: "6"
 
 artifacts:
-  - path: jsreport.zip
-
-init:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))  
-
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))    
+  - path: jsreport-win.zip
 
 install:  
   - ps: Install-Product node $env:nodejs_version
@@ -25,8 +19,8 @@ test_script:
 
 before_deploy:  
   - "node_modules/.bin/jsreport-compile.cmd"
-  - "7z a jsreport.zip jsreport.exe"
-  - "appveyor PushArtifact jsreport.zip"
+  - "7z a jsreport-win.zip jsreport.exe"
+  - "appveyor PushArtifact jsreport-win.zip"
 
 deploy:  
  provider: GitHub
