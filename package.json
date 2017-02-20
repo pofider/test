@@ -5,6 +5,6 @@
   "main": "index.js", 
   "dependencies": {
     "jsreport": "jsreport/jsreport",
-    "jsreport-compile": "*"
+    "jsreport-compile": "jsreport/jsreport-compile"
   }
 }
