@@ -14,11 +14,9 @@ before_deploy:
   - "npm install -g npm-run" 
   - "node node_modules/jsreport --init"
   - "npm-run jsreport-compile"
-  - "mv jsreport.exe jsreport"
   - "tar -czvf jsreport-$TRAVIS_OS_NAME.tar.gz jsreport"
   - "npm install phantomjs-exact-2-1-1"
   - "env phantom:defaultPhantomjsVersion=2.1.1 npm-run jsreport-compile"
-  - "mv jsreport.exe jsreport"
   - "tar -czvf jsreport-$TRAVIS_OS_NAME-ph2.tar.gz jsreport"
 
 addons:
