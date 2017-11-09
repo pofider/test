@@ -2,7 +2,7 @@ os:
   - linux
   - osx     
 
-if: type IN (tag) 
+if: env(TRAVIS_OS_NAME) =~ ^linux$
 
 sudo: required
 language: node_js
