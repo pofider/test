@@ -1,8 +1,8 @@
-matrix:
-   include:
-      - os: linux
-   exclude:
-      - os: osx        
+os:
+  - linux
+  - osx     
+
+if: type IN (tag) 
 
 sudo: required
 language: node_js
