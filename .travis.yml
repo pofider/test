@@ -2,6 +2,8 @@ matrix:
    include:
       - os: linux
       - os: osx
+        on:
+          tags: true
 
 sudo: required
 language: node_js
