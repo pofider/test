@@ -2,7 +2,7 @@ os:
   - linux
   - osx     
 
-if: branch = master
+if: env($TRAVIS_OS_NAME) = linux
 
 sudo: required
 language: node_js
