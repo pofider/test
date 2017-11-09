@@ -2,7 +2,7 @@ os:
   - linux
   - osx     
 
-if: env($TRAVIS_OS_NAME)=linux
+if: env(TRAVIS_OS_NAME)=linux
 
 sudo: required
 language: node_js
