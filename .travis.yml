@@ -7,7 +7,9 @@ matrix:
 sudo: required
 language: node_js
 node_js:
+- '4'
 - '6'
+
 deploy:
   provider: releases
   api_key:
