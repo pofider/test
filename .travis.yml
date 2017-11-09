@@ -1,8 +1,9 @@
-matrix:
-  - os: linux
-  - os: osx
-    on:
-      tags: true
+
+os:
+  - linux
+  - osx
+  
+sudo: required
 
 language: node_js
 
@@ -13,7 +14,8 @@ deploy:
   provider: releases
   skip_cleanup: true
   api_key:
-    secure: kRsCQ89yBpjEV0w7W8DJ33VW/YhW7U1w/j6g/CEEU03PfarXzPyVcV0WKcXXUzbtgKNCUzx4Hfeio0RAqzf4fYPpJqMh/MOjvoItcP4I1lKyncj+Pa2Zhaa2r8IZ98/PkvFuMR7JFjecwsEfKjjgqAkb5ledvJlcZPWGq/KmEvTAmXxuS4hqHPLrNNXy0cx+QuZLrfOq1YU9U++RwHs2R42Jf9ia6oyHKifZNE+BbDc+DjQ/9dq5GtpfjKUvCMPj4aNRlrWQBfQjqLTnyqKWHzaTLMR4BJFvVXQ3iLeHnNZZEZCAapKCGMcKzCqFbhSj+wM1eb5or+I8cnFttbn1TzYfc+yHEaiPrLqWy1/nDgel9A+lvkQaEAlJEKLTo4TeuFDHATr3N1MT4QBRqNQLpKmX5pjgbgv5+nyOd7ngLtCWzT/X6XIwz88SnRVmKeAvoxQRiSFfz7idC6/yUMJH7a1Wyq5YbMRSUaszK6s0059vbfjAYVl3DBbiyotUNXaHtmjyT04V/DPAPbz2yN4dWLw0yVAzfaLFCmxoXPg81erK0+zat2obDPEjAAwNI/oztZQRwkGfqKmWa9ohDgwebfMYubcGT+XiP8ih0T6j74kpPQJ/PBc6h+tkpO/oXszYiB0YJfVECzkaV+1NFRvo5shvAVOWTSik9yEyhBP3Mn0=
-  file: package.json
+    secure: KNphk4mKNfgYkgPk2/REnDzGMPNLMt6thxIjFjSwTYDUsDsiXmyiHpqH7A00W7xPm9nqZZVwTmeDO3gQKPbqgWxiIsp/CA0FNk6ABQp7FQDLMjLBC683jCzeNNM0Jt6HcU0f/MN/i+rIpGZWxGkoShZIG7lIzY/KCsU9eNjV6D8Q/s1c+tXJCwjDpjVzwgJAB//og4+AJtl8h+MKogIEynk1ucXto5dHcUHZxlBiVQhMor1SQ2XufJKCW+SCgcfMeA5Mbng6mykGleADWtCxiL0pOLarxl//RIV13LNaaRxY8tcXKu+oXC3z7ZFuGoLCSMI8BEkmXrSO0oIh4Z5Ez/bz7d7V9thAFbM7N/DXp6caY7KKzfJvXWoEZJLHrO+A8TAyxRgwQv/9wSkUWRE1e55qWS1voWDYrwffNznWpj+8QXP4WfIch80ludhn2JxZMLVg1sEFLlliqW+uO0nhbnQm/+W5E2Bnk1yQd4xmNOvBWAz/SQhDz7p9uClWrAW9ZUt9Ldo40+QxdK9K//g2cLQJre/E9juYQkJ4FucGJG9k+7BX8Nkc4ZP2zoD4sP1MCfeD8r1p7al0+fxcPNvKQsO768v1PWpGQJGE2e495ziEKj0e4HqfxduZg4U3i/YbNAHooeuM9rDgpvDHiFAIGJht8SRabLgjmJPI0VxauiA=
+  file:
+    - package.json
   on:
     tags: true
