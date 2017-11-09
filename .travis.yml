@@ -1,8 +1,8 @@
-os:
-  - linux
-  - osx     
-
-if: env(TRAVIS_OS_NAME)=linux
+matrix:
+   include:
+      - os: linux
+      - os: osx
+        if: tag =~ ^0
 
 sudo: required
 language: node_js
