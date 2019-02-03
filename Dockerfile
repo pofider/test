@@ -1,44 +1,31 @@
-FROM microsoft/azure-functions-runtime:2.0.0-jessie
-MAINTAINER Jan Blaha
-EXPOSE 5488
+FROM ubuntu:xenial
 
 RUN adduser --disabled-password --gecos "" jsreport && \
     apt-get update && \
-    apt-get install -y --no-install-recommends curl ca-certificates && \
-    curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-    apt-get install -y --no-install-recommends nodejs \
-        libgtk2.0-dev \
-        libxtst-dev \
-        libxss1 \
-        libgconf2-dev \
-        libnss3-dev \
-        libasound2-dev \
-        xfonts-75dpi \
-        xfonts-base \
-    && \
-    rm -rf /tmp/* /var/lib/apt/lists/* /var/cache/apt/* && \
-    curl -Lo phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2 && \
-    tar jxvf phantomjs.tar.bz2 && \
-    chmod +x phantomjs-1.9.8-linux-x86_64/bin/phantomjs && \
-    mv phantomjs-1.9.8-linux-x86_64/bin/phantomjs /usr/local/bin/ && \
-    rm -rf phantomjs*
+    apt-get install -y --no-install-recommends libgconf-2-4 gnupg git curl wget ca-certificates && \
+    # chrome needs some base fonts
+    apt-get install -y --no-install-recommends xfonts-base xfonts-75dpi && \
+    # node
+    curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends nodejs && \
+    npm i -g npm && \
+    # chrome
+    apt-get install -y libgconf-2-4 && \
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && \
+    apt-get update && \
+    apt-get install -y google-chrome-unstable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst --no-install-recommends && \
+    # cleanup
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/* && \
+    rm -rf /src/*.deb
 
-VOLUME ["/jsreport"]
+RUN mkdir -p /app
+WORKDIR /app
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir /mytemp
+RUN npm install puppeteer@1.12.1
 
-RUN npm install jsreport --production && \
-    node node_modules/jsreport --init && \
-    npm cache clean -f && \
-    rm -rf node_modules/moment-timezone/data/unpacked && \
-    rm -rf node_modules/moment/min
+COPY . /app
 
-ADD run.sh /usr/src/app/run.sh
-COPY . /usr/src/app
-
-ENV NODE_ENV production
-ENV phantom:strategy phantom-server
-ENV tasks:strategy http-server
-
-CMD ["bash", "/usr/src/app/run.sh"]
+CMD ["node", "test.js"]
