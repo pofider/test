@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "@types/jsreport-core": "*",
-    "@types/jsreport-chrome-pdf": "*"
+    "@types/jsreport-chrome-pdf": "*",
+    "@types/jsreport-jsrender": "*",
+    "@types/jsreport-html-to-xlsx": "*",
+    "@types/jsreport-xlsx": "*"
   },
   "name": "@types/jsreport",
   "scripts": {},
