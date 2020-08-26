@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "@types/jsreport-core": "*"
+    "@types/jsreport-core": "*",
+    "@types/jsreport-chrome-pdf": "*"
   },
   "name": "@types/jsreport",
   "scripts": {},
