@@ -16,7 +16,7 @@ jsreport.beforeRenderListeners.add('test', (req, res) => {
             engine: 'handlebars',
             recipe: 'chrome-pdf',
             chrome: {
-                orientation: 'landscape'
+                landscape: true
             }
         },
         data: { foo: "hello2" }
