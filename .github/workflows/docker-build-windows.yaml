@@ -22,5 +22,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          file: packages/jsreport/windowsservercore/Dockerfile
+          file: packages/jsreport/docker/windowsservercore/Dockerfile
           tags: pofider/test:${{ github.event.release.tag_name }}-windowsservercore, pofider/test:latest-windowsservercore

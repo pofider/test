@@ -22,5 +22,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          file: packages/jsreport/full/Dockerfile
+          file: packages/jsreport/docker/full/Dockerfile
           tags: pofider/test:${{ github.event.release.tag_name }}-full, pofider/test:latest-full
