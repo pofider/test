@@ -7,17 +7,17 @@ on:
 jobs:
   push:
 
-    runs-on: windows-2022
+    runs-on: windows-2019
 
     steps:
       - uses: actions/checkout@v2    
 
-      - run: |
-          docker login -u $env:USER -p $env:TOKEN
-          docker build -f packages/jsreport/docker/windowsservercore/Dockerfile -t $env:TAG .
-          docker push $env:TAG
-          docker logout
-        env:
-          USER: ${{ secrets.DOCKER_USERNAME }}
-          TOKEN: ${{ secrets.DOCKER_PASSWORD }}
-          TAG: pofider/test:${{ github.event.release.tag_name }}-windowsservercore    
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build & push Docker image
+        with:
+          image: pofider/test
+          tags: ${{ github.event.release.tag_name }}-windowsservercore, latest-windowsservercore
+          registry: docker.io
+          dockerfile: packages/jsreport/docker/windowsservercore/Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}     
