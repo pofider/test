@@ -1,5 +1,23 @@
 {
-    "scripts": {
-        "compile": "node compile.js"
-    }
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pofider/test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pofider/test/issues"
+  },
+  "homepage": "https://github.com/pofider/test#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "jsreport": "^3.4.1"
+  }
 }
