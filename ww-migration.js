@@ -2,9 +2,9 @@ const path = require('path')
 const fs = require('fs')
 const MongoClient = require('mongodb').MongoClient
 const moment = require('moment')
-const nanoid = require('nanoid')
+const { nanoid } = require('nanoid')
 
-const connectionString = process.env.connectionString
+const connectionString = process.env.connectionString || 'mongodb://localhost:27017'
 const singleTenantName = process.env.tenantName
 const database = 'multitenant'
 const rootDatabase = 'multitenant-root'
@@ -16,7 +16,6 @@ const defaultPhantomjsChangeDate = new Date(2016, 9, 18)
 const refDateForTenantsLoginQuery = moment(new Date(2022, 0, 21)).subtract(6, 'months').toDate()
 const shouldRunMigration = !args.includes('--list')
 const isSingleTenantMigration = singleTenantName != null
-const migrationTemplatePostfix = '-jsreport-support'
 
 async function run () {
   if (connectionString == null) {
@@ -188,40 +187,34 @@ async function migrateTemplatesWithExplicitPhantomWindows (rootDb, db) {
 
     const templatesToMigrate = []
 
-    for (const template of templates) {
-      let migratedBefore = false
-
-      const migratedTemplateName = getMigrationTemplateName(template.name)
-
-      const migratedTemplate = await db.collection('templates').findOne({
-        tenantId: t.name,
-        name: migratedTemplateName
-      }, {
-        project: { _id: 1, name: 1 }
-      })
-
-      migratedBefore = migratedTemplate != null
-
-      if (!migratedBefore) {
-        const templateMigrationInfoStored = {
-          _id: template._id,
-          shortid: template.shortid,
-          name: template.name,
-          migrationType: 'phantom-windows'
-        }
-
-        if (shouldRunMigration) {
-          const newTemplate = await createMigrationPhantomTemplate(db, template)
-          templateMigrationInfoStored.migrationResultEntity = newTemplate
-        }
-
-        templatesToMigrate.push(templateMigrationInfoStored)
+    for (const template of templates) {     
+      const templateMigrationInfoStored = {
+        _id: template._id,
+        shortid: template.shortid,
+        name: template.name,
+        migrationType: 'phantom-windows'
       }
+
+      if (shouldRunMigration) {
+        await updatePhantomTemplate(db, template)        
+      }
+
+      templatesToMigrate.push(templateMigrationInfoStored)     
     }
 
     if (templatesToMigrate.length > 0) {
       totalExplicitPhantomWindowsTemplates += templatesToMigrate.length
       explicitPhantomWindowsTemplates.set(t.name, templatesToMigrate)
+
+      if (shouldRunMigration) {
+        await rootDb.collection('tenants').updateOne({
+          _id: t._id
+        }, {
+          $set: {
+            windowsMigrated: true
+          }
+        })
+      }
     }
   }
 
@@ -274,40 +267,34 @@ async function migrateTemplatesUsingDefaultPhantomWindows (rootDb, db) {
 
     const templatesToMigrate = []
 
-    for (const template of templates) {
-      let migratedBefore = false
-
-      const migratedTemplateName = getMigrationTemplateName(template.name)
-
-      const migratedTemplate = await db.collection('templates').findOne({
-        tenantId: t.name,
-        name: migratedTemplateName
-      }, {
-        project: { _id: 1, name: 1 }
-      })
-
-      migratedBefore = migratedTemplate != null
-
-      if (!migratedBefore) {
-        const templateMigrationInfoStored = {
-          _id: template._id,
-          shortid: template.shortid,
-          name: template.name,
-          migrationType: 'phantom-windows'
-        }
-
-        if (shouldRunMigration) {
-          const newTemplate = await createMigrationPhantomTemplate(db, template)
-          templateMigrationInfoStored.migrationResultEntity = newTemplate
-        }
-
-        templatesToMigrate.push(templateMigrationInfoStored)
+    for (const template of templates) {            
+      const templateMigrationInfoStored = {
+        _id: template._id,
+        shortid: template.shortid,
+        name: template.name,
+        migrationType: 'phantom-windows'
       }
+
+      if (shouldRunMigration) {
+        await updatePhantomTemplate(db, template)        
+      }
+
+      templatesToMigrate.push(templateMigrationInfoStored)     
     }
 
     if (templatesToMigrate.length > 0) {
       totalOldPhantomWindowsTemplates += templatesToMigrate.length
       oldPhantomWindowsTemplates.set(t.name, templatesToMigrate)
+
+      if (shouldRunMigration) {
+        await rootDb.collection('tenants').updateOne({
+          _id: t._id
+        }, {
+          $set: {
+            windowsMigrated: true
+          }
+        })
+      }
     }
   }
 
@@ -351,40 +338,34 @@ async function migrateTemplatesWithExplicitWkhtmltopdfWindows (rootDb, db) {
 
     const templatesToMigrate = []
 
-    for (const template of templates) {
-      let migratedBefore = false
-
-      const migratedTemplateName = getMigrationTemplateName(template.name)
-
-      const migratedTemplate = await db.collection('templates').findOne({
-        tenantId: t.name,
-        name: migratedTemplateName
-      }, {
-        project: { _id: 1, name: 1 }
-      })
-
-      migratedBefore = migratedTemplate != null
-
-      if (!migratedBefore) {
-        const templateMigrationInfoStored = {
-          _id: template._id,
-          shortid: template.shortid,
-          name: template.name,
-          migrationType: 'wkhtmltopdf-windows'
-        }
-
-        if (shouldRunMigration) {
-          const newTemplate = await createMigrationWkhtmltopdfTemplate(db, template)
-          templateMigrationInfoStored.migrationResultEntity = newTemplate
-        }
-
-        templatesToMigrate.push(templateMigrationInfoStored)
+    for (const template of templates) {      
+      const templateMigrationInfoStored = {
+        _id: template._id,
+        shortid: template.shortid,
+        name: template.name,
+        migrationType: 'wkhtmltopdf-windows'
       }
+
+      if (shouldRunMigration) {
+        await updateWkhtmltopdfTemplate(db, template)        
+      }
+
+      templatesToMigrate.push(templateMigrationInfoStored)     
     }
 
     if (templatesToMigrate.length > 0) {
       totalExplicitWkhtmltopdfWindowsTemplates += templatesToMigrate.length
       explicitWkhtmltopdfWindowsTemplates.set(t.name, templatesToMigrate)
+
+      if (shouldRunMigration) {
+        await rootDb.collection('tenants').updateOne({
+          _id: t._id
+        }, {
+          $set: {
+            windowsMigrated: true
+          }
+        })
+      }
     }
   }
 
@@ -393,54 +374,36 @@ async function migrateTemplatesWithExplicitWkhtmltopdfWindows (rootDb, db) {
   return { total: totalExplicitWkhtmltopdfWindowsTemplates, groups: explicitWkhtmltopdfWindowsTemplates }
 }
 
-async function createMigrationPhantomTemplate (db, template) {
-  const newTemplate = {
-    ...template
-  }
-
-  delete newTemplate._id
-  delete newTemplate.shortid
-
+async function updatePhantomTemplate (db, template) {
   const phantomWindowsToLinuxStyle = '/* styles needed for migration from phantom-windows */\nbody { zoom: 0.75; }'
 
-  newTemplate.shortid = nanoid(7)
-  newTemplate.name = getMigrationTemplateName(newTemplate.name)
-  newTemplate.content = addStyleToContent(newTemplate.content, phantomWindowsToLinuxStyle)
-  newTemplate.phantom = newTemplate.phantom != null ? { ...newTemplate.phantom } : {}
-  newTemplate.phantom.phantomjsVersion = '1.9.8'
+  const update = {
+    $set: {
+      content: addStyleToContent(template.content, phantomWindowsToLinuxStyle),
+      phantom: {
+        ...(template.phantom || {}),
+        phantomjsVersion: '1.9.8'
+      }
+    }
+  }  
 
-  const result = await db.collection('templates').insertOne(newTemplate)
-
-  return {
-    _id: result.insertedId,
-    shortid: newTemplate.shortid,
-    name: newTemplate.name
-  }
+  return db.collection('templates').updateOne({ _id: template._id, tenantId: template.tenantId }, update)
 }
 
-async function createMigrationWkhtmltopdfTemplate (db, template) {
-  const newTemplate = {
-    ...template
-  }
-
-  delete newTemplate._id
-  delete newTemplate.shortid
-
+async function updateWkhtmltopdfTemplate (db, template) {
   const wkhtmltopdfWindowsToLinuxStyle = '/* styles needed for migration from wkhtmltopdf-windows */\nbody { zoom: 0.8; }'
 
-  newTemplate.shortid = nanoid(7)
-  newTemplate.name = getMigrationTemplateName(newTemplate.name)
-  newTemplate.content = addStyleToContent(newTemplate.content, wkhtmltopdfWindowsToLinuxStyle)
-  newTemplate.wkhtmltopdf = newTemplate.wkhtmltopdf != null ? { ...newTemplate.wkhtmltopdf } : {}
-  newTemplate.wkhtmltopdf.wkhtmltopdfVersion = '0.12.3'
-
-  const result = await db.collection('templates').insertOne(newTemplate)
-
-  return {
-    _id: result.insertedId,
-    shortid: newTemplate.shortid,
-    name: newTemplate.name
+  const update = {
+    $set: {
+      content: addStyleToContent(template.content, wkhtmltopdfWindowsToLinuxStyle),
+      wkhtmltopdf: {
+        ...(template.wkhtmltopdf  || {}),
+        wkhtmltopdfVersion: '0.12.3'
+      }
+    }
   }
+
+  return db.collection('templates').updateOne({ _id: template._id, tenantId: template.tenantId }, update)  
 }
 
 function addStyleToContent (content, newStyle) {
@@ -479,6 +442,3 @@ function addStyleToContent (content, newStyle) {
   return result
 }
 
-function getMigrationTemplateName (templateName) {
-  return `${templateName}${migrationTemplatePostfix}`
-}
