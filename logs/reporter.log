@@ -1,0 +1,64 @@
+2022-05-27T09:07:30.778Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-05-27T09:07:30.781Z - info: Searching for available extensions in C:\work\pofider\test\
+2022-05-27T09:07:30.794Z - info: Extensions location cache doesn't contain entry yet, crawling
+2022-05-27T09:07:33.258Z - info: Found 35 extensions
+2022-05-27T09:07:35.369Z - info: Setting dedicated-process (process based) strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2022-05-27T09:07:35.389Z - info: Using extension cli@local:C:\work\pofider\test\node_modules\jsreport-cli:2.2.5
+2022-05-27T09:07:35.426Z - info: Using extension debug@local:C:\work\pofider\test\node_modules\jsreport-debug:2.1.3
+2022-05-27T09:07:35.442Z - info: Using extension express@local:C:\work\pofider\test\node_modules\jsreport-express:2.8.1
+2022-05-27T09:07:37.643Z - info: Using extension freeze@local:C:\work\pofider\test\node_modules\jsreport-freeze:2.0.0
+2022-05-27T09:07:37.657Z - info: Using extension handlebars@local:C:\work\pofider\test\node_modules\jsreport-handlebars:2.1.0
+2022-05-27T09:07:37.677Z - info: Using extension import-export@local:C:\work\pofider\test\node_modules\jsreport-import-export:2.1.1
+2022-05-27T09:07:38.364Z - info: Using extension jsrender@local:C:\work\pofider\test\node_modules\jsreport-jsrender:2.1.1
+2022-05-27T09:07:38.377Z - info: Using extension tags@local:C:\work\pofider\test\node_modules\jsreport-tags:2.5.0
+2022-05-27T09:07:38.404Z - info: Using extension templates@local:C:\work\pofider\test\node_modules\jsreport-templates:2.4.0
+2022-05-27T09:07:38.421Z - info: Using extension authorization@local:C:\work\pofider\test\node_modules\jsreport-authorization:2.4.0
+2022-05-27T09:07:38.470Z - info: Using extension base@local:C:\work\pofider\test\node_modules\jsreport-base:2.0.2
+2022-05-27T09:07:38.487Z - info: Using extension browser-client@local:C:\work\pofider\test\node_modules\jsreport-browser-client:2.2.2
+2022-05-27T09:07:38.512Z - info: Using extension child-templates@local:C:\work\pofider\test\node_modules\jsreport-child-templates:1.4.0
+2022-05-27T09:07:38.559Z - info: Using extension chrome-pdf@local:C:\work\pofider\test\node_modules\jsreport-chrome-pdf:1.10.0
+2022-05-27T09:07:38.704Z - info: Using extension data@local:C:\work\pofider\test\node_modules\jsreport-data:2.4.0
+2022-05-27T09:07:38.716Z - info: Using extension docx@local:C:\work\pofider\test\node_modules\jsreport-docx:2.9.0
+2022-05-27T09:07:38.746Z - info: Using extension fs-store@local:C:\work\pofider\test\node_modules\jsreport-fs-store:2.9.1
+2022-05-27T09:07:40.150Z - info: Using extension licensing@local:C:\work\pofider\test\node_modules\jsreport-licensing:2.2.3
+2022-05-27T09:07:40.170Z - info: Using extension pdf-utils@local:C:\work\pofider\test\node_modules\jsreport-pdf-utils:1.10.1
+2022-05-27T09:07:40.965Z - info: Using extension pptx@local:C:\work\pofider\test\node_modules\jsreport-pptx:0.7.0
+2022-05-27T09:07:40.991Z - info: Using extension reports@local:C:\work\pofider\test\node_modules\jsreport-reports:2.5.1
+2022-05-27T09:07:41.024Z - info: Using extension static-pdf@local:C:\work\pofider\test\node_modules\jsreport-static-pdf:0.4.0
+2022-05-27T09:07:41.072Z - info: Using extension studio@local:C:\work\pofider\test\node_modules\jsreport-studio:2.10.1
+2022-05-27T09:07:41.317Z - info: Using extension text@local:C:\work\pofider\test\node_modules\jsreport-text:2.0.0
+2022-05-27T09:07:41.331Z - info: Using extension version-control@local:C:\work\pofider\test\node_modules\jsreport-version-control:1.6.0
+2022-05-27T09:07:42.559Z - info: Using extension assets@local:C:\work\pofider\test\node_modules\jsreport-assets:1.7.0
+2022-05-27T09:07:42.643Z - info: Using extension html-to-xlsx@local:C:\work\pofider\test\node_modules\jsreport-html-to-xlsx:2.8.3
+2022-05-27T09:07:45.970Z - info: html-to-xlsx detected chrome as available html engine
+2022-05-27T09:07:45.971Z - info: Using extension scheduling@local:C:\work\pofider\test\node_modules\jsreport-scheduling:2.5.0
+2022-05-27T09:07:46.431Z - info: Using extension scripts@local:C:\work\pofider\test\node_modules\jsreport-scripts:2.6.0
+2022-05-27T09:07:46.455Z - info: Using extension studio-theme-dark@local:C:\work\pofider\test\node_modules\jsreport-studio-theme-dark:0.3.0
+2022-05-27T09:07:46.475Z - info: Using extension xlsx@local:C:\work\pofider\test\node_modules\jsreport-xlsx:2.5.0
+2022-05-27T09:07:48.075Z - info: Using extension public-templates@local:C:\work\pofider\test\node_modules\jsreport-public-templates:2.2.0
+2022-05-27T09:07:48.088Z - info: Using extension resources@local:C:\work\pofider\test\node_modules\jsreport-resources:2.1.0
+2022-05-27T09:07:48.099Z - info: Using extension sample-template@local:C:\work\pofider\test\node_modules\jsreport-sample-template:2.6.1
+2022-05-27T09:07:48.113Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-05-27T09:07:48.114Z - info: Using fs provider for template store.
+2022-05-27T09:07:48.122Z - info: fs store is persisting using fs
+2022-05-27T09:07:48.124Z - info: fs store is synchronizing using fs
+2022-05-27T09:07:48.132Z - info: fs store is loading data
+2022-05-27T09:07:48.165Z - info: fs store is initialized successfully
+2022-05-27T09:07:48.198Z - info: Creating default express app.
+2022-05-27T09:07:48.601Z - info: jsreport server successfully started on http port: 5488
+2022-05-27T09:07:48.603Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-05-27T09:07:48.801Z - info: Verifying license key free
+2022-05-27T09:07:48.815Z - info: Using free license
+2022-05-27T09:07:49.416Z - info: reporter initialized
+2022-05-27T09:09:19.027Z - info: Starting rendering request 1 (user: null)
+2022-05-27T09:09:19.029Z - info: Rendering template { name: test, recipe: chrome-pdf, engine: handlebars, preview: true }
+2022-05-27T09:09:20.693Z - info: Rendering request 1 finished in 1665 ms
+2022-05-27T09:10:50.779Z - info: Starting rendering request 2 (user: null)
+2022-05-27T09:10:50.780Z - info: Rendering template { name: test, recipe: chrome-pdf, engine: handlebars, preview: true }
+2022-05-27T09:10:51.640Z - info: Rendering request 2 finished in 862 ms
+2022-05-27T09:10:55.960Z - info: Starting rendering request 3 (user: null)
+2022-05-27T09:10:55.962Z - info: Rendering template { name: test, recipe: chrome-pdf, engine: handlebars, preview: true }
+2022-05-27T09:10:56.630Z - info: Rendering request 3 finished in 670 ms
+2022-05-27T09:11:12.913Z - info: Starting rendering request 4 (user: null)
+2022-05-27T09:11:12.915Z - info: Rendering template { name: test, recipe: chrome-pdf, engine: handlebars, preview: true }
+2022-05-27T09:11:13.634Z - info: Rendering request 4 finished in 720 ms

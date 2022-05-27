@@ -1,0 +1,30 @@
+{
+    "shortid": "x5WVncb-vO",
+    "name": "test",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": {
+        "$$date": 1653642540682
+    },
+    "modificationDate": {
+        "$$date": 1653642654948
+    },
+    "_id": "KZJzdQRf6ILi8ncL",
+    "$entitySet": "templates",
+    "resources": {
+        "items": [
+            {
+                "shortid": "iXQt-tVC5M",
+                "entitySet": "data"
+            },
+            {
+                "shortid": "3_z_Lde8WP",
+                "entitySet": "data"
+            }
+        ],
+        "defaultLanguage": "de"
+    }
+}
