@@ -1,5 +1,5 @@
 const jsreport = require('jsreport')()
-const migratedResourcesToAssets = reqiore('./migrateResourcesToAssets')
+const migratedResourcesToAssets = require('./migrateResourcesToAssets')
 if (process.env.JSREPORT_CLI) {
   // export jsreport instance to make it possible to use jsreport-cli
   module.exports = jsreport
