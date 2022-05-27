@@ -1,8 +1,7 @@
 const Request = require('../../shared/request')
 
 module.exports = async (reporter) => {
-  if (
-    reporter.options.migrateResourcesToAssets === false ||
+  if (    
     reporter.documentStore.collection('scripts') == null ||
     reporter.documentStore.collection('data') == null
   ) {
@@ -48,6 +47,7 @@ module.exports = async (reporter) => {
             } else {
               const assetProps = {
                 content: Buffer.from(dataEntity.dataJson || ''),
+                shortid: dataEntity.shortid,
                 folder: dataEntity.folder || null
               }
 
