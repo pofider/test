@@ -9,6 +9,6 @@
     "entryPoint": "server.js"
   },
   "dependencies": {
-    "jsreport": "^2.11.0"
+    "jsreport": "3.6.0"
   }
 }
