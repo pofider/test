@@ -1,5 +1,3 @@
-const Request = require('../../shared/request')
-
 module.exports = async (reporter) => {
   if (    
     reporter.documentStore.collection('scripts') == null ||
@@ -14,7 +12,7 @@ module.exports = async (reporter) => {
     return
   }
 
-  const req = Request({})
+  const req = reporter.Request({})
   await reporter.documentStore.beginTransaction(req)
 
   try {
