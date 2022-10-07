@@ -1,0 +1,43 @@
+{
+  "name": "@jsreport/jsreport-fs-store-aws-s3-persistence",
+  "version": "3.0.1",
+  "description": "Make jsreport fs store using aws s3 to store entities",
+  "keywords": [
+    "jsreport",
+    "aws"
+  ],
+  "homepage": "https://github.com/jsreport/jsreport/tree/master/packages/jsreport-fs-store-aws-s3-persistence",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jsreport/jsreport.git"
+  },
+  "license": "MIT",
+  "author": "Jan Blaha",
+  "files": [
+    "lib",
+    "index.js",
+    "jsreport.config.js"
+  ],
+  "scripts": {
+    "test": "standard"
+  },
+  "dependencies": {
+    "aws-sdk": "2.437.0",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "standard": "16.0.4"
+  },
+  "engines": {
+    "node": ">=16.11"
+  },
+  "standard": {
+    "ignore": [
+      "studio/main.js"
+    ],
+    "env": {
+      "node": true,
+      "mocha": true
+    }
+  }
+}

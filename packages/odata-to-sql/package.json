@@ -1,0 +1,36 @@
+{
+  "name": "@jsreport/odata-to-sql",
+  "version": "0.12.0",
+  "description": "Generate SQL from OData in node.js",
+  "homepage": "https://github.com/jsreport/jsreport",
+  "bugs": {
+    "url": "https://github.com/jsreport/jsreport/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsreport/jsreport.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha && standard"
+  },
+  "dependencies": {
+    "jsreport-sql-2": "0.0.1",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "mocha": "7.0.1",
+    "should": "13.2.3",
+    "standard": "16.0.4"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "beforeEach",
+      "define"
+    ]
+  }
+}
