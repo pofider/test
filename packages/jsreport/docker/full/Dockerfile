@@ -20,7 +20,7 @@ RUN apt-get update && \
     # adding custom ppa repository to get access to custom version of chromium for macOS M1 hardware
     add-apt-repository ppa:phd/chromium-browser && \
     apt-get update && \
-    apt install -y chromium-browser=105.0.5195.102-0ubuntu0.18.04.1 chromium-codecs-ffmpeg=105.0.5195.102-0ubuntu0.18.04.1 && \
+    apt install -y chromium-browser=106.0.5249.103-0ubuntu0.18.04.1 chromium-codecs-ffmpeg=106.0.5249.103-0ubuntu0.18.04.1 && \
     # fonts for chrome
     apt install -y fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst && \
     # unoconv
