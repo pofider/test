@@ -31,3 +31,9 @@ jobs:
           platforms: linux/amd64,linux/arm64
           file: packages/jsreport/docker/default/Dockerfile
           tags: pofider/test:${{ github.event.release.tag_name }}, pofider/test:latest
+      
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v3
+        with:         
+          repository: jsreport/jsreport
+          readme-filepath: ./packages/jsreport/docker/README.md
