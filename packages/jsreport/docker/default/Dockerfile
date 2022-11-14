@@ -32,22 +32,6 @@ RUN set -eux; \
 
 RUN addgroup -S jsreport && adduser --shell /bin/bash -S -G jsreport jsreport
 
-RUN apk update --no-cache && \
-    echo @edge http://dl-cdn.alpinelinux.org/alpine/v3.16/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
-    apk add --no-cache \
-    libstdc++@edge \
-    chromium@edge=106.0.5249.103-r0\
-    nss \
-    freetype \
-    harfbuzz \
-    ttf-freefont@edge \
-    # just for now as we npm install from git
-    git \
-    # so user can docker exec -it test /bin/bash
-    bash
-
 RUN rm -rf /var/cache/apk/* /tmp/*
 
 RUN mkdir -p /app

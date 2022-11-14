@@ -35,5 +35,5 @@ jobs:
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
         with:         
-          repository: jsreport/jsreport
+          repository: pofider/test
           readme-filepath: ./packages/jsreport/docker/README.md
