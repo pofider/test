@@ -34,6 +34,8 @@ jobs:
       
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
-        with:         
+        with: 
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}        
           repository: pofider/test
           readme-filepath: ./packages/jsreport/docker/README.md
